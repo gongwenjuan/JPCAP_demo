@@ -10,11 +10,11 @@ package cn.edu.sjtu.PacketCount;
 
 
 
-import java.io.*;
-//import java.io.IOException;
+
+import java.io.IOException;
 import jpcap.JpcapCaptor; 
 import jpcap.packet.*;
-//import jpcap.*;	
+
 
 
 public class PacketCount {
@@ -27,13 +27,8 @@ public class PacketCount {
 	
 	
 	public static  void main(String[] args) throws IOException  {
-		// TODO Auto-generated method stub
-		
-		
-//		FileReader fr = new FileReader(Path.path);
-//		BufferedReader in=new   BufferedReader(fr);
+	
 		JpcapCaptor captor=JpcapCaptor.openFile("/users/wenjuangong/testtrace.pcap");
-		
 		
 		int count=0;
 		while(true){
@@ -44,14 +39,11 @@ public class PacketCount {
 			  //otherwise, count
 			  count++;
 
-//			  System.out.println(packet);
 			}
-//	 int a=captor.received_packets;
+		
 		System.out.println(count);
 	 
-//		System.out.println(captor.received_packets);
-	
-//    	captor.close();
+     	captor.close();
 }			
 }
 

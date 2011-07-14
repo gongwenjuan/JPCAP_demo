@@ -22,7 +22,7 @@ public class Advanced {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+
 		ReceivePacket a=new ReceivePacket();
 		JpcapCaptor captor=JpcapCaptor.openFile("/users/wenjuangong/testtrace.pcap");
 		while(true){

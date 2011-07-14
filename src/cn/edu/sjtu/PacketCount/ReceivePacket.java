@@ -9,18 +9,14 @@ package cn.edu.sjtu.PacketCount;
  */
 
 
-//import java.text.SimpleDateFormat;
-//import java.util.Date;
 
-//import jpcap.JpcapCaptor;
 import jpcap.PacketReceiver;
-import jpcap.packet.ARPPacket;
-import jpcap.packet.ICMPPacket;
-import jpcap.packet.Packet;
-import jpcap.packet.TCPPacket;
-import jpcap.packet.UDPPacket; 
-
-
+//import jpcap.packet.ARPPacket;
+//import jpcap.packet.ICMPPacket;
+//import jpcap.packet.Packet;
+//import jpcap.packet.TCPPacket;
+//import jpcap.packet.UDPPacket; 
+import jpcap.packet.*;
 
 public class ReceivePacket implements PacketReceiver {
 //	类ReceivePacket声明自己使用接口PacketReceiver
@@ -43,6 +39,7 @@ public class ReceivePacket implements PacketReceiver {
 	   tcpPacketCount++;
 
 	   TCPPacket tcp = (TCPPacket) p;
+//	   定义一个新的TCPPacket名字叫tcp，赋值为抓到的包p (??具体什么是这样的语句不是很清楚)
 
 	  tcpPacketLength += tcp.len;
 //	   a+=n即为a=a+b
@@ -50,10 +47,10 @@ public class ReceivePacket implements PacketReceiver {
 	   System.out
 	     .println("================================================================================");
 	   System.out.println("TCPPacket");
-	   System.out.println("|——*Source IP address of this packet：" + tcp.src_ip);
-	   System.out.println("|——*Destination IP address of this packet：" + tcp.dst_ip);
-	   System.out.println("|——*Protocol type of this packet：" + tcp.protocol + "(TCP)");
-	   System.out.println("|——*Length of this packet：" + tcp.len);
+	   System.out.println("Source IP address of this packet：" + tcp.src_ip);
+	   System.out.println("Destination IP address of this packet：" + tcp.dst_ip);
+	   System.out.println("Protocol type of this packet：" + tcp.protocol + "(TCP)");
+	   System.out.println("Length of this packet：" + tcp.len);
 
 	  } else if (p instanceof jpcap.packet.UDPPacket) {
 		  // 如果截获的包为UDP包
@@ -66,15 +63,15 @@ public class ReceivePacket implements PacketReceiver {
 	   System.out
 	     .println("================================================================================");
 	   System.out.println("UDPPacket");
-	   System.out.println("|——*Source IP address of this packet：" + udp.src_ip);
-	   System.out.println("|——*Destination IP address of this packet：" + udp.dst_ip);
-	   System.out.println("|——*Protocol type of this packet：" + udp.protocol + "(UDP)");
-	   System.out.println("|——*Length of this packet：" + udp.len);
+	   System.out.println("Source IP address of this packet：" + udp.src_ip);
+	   System.out.println("Destination IP address of this packet：" + udp.dst_ip);
+	   System.out.println("Protocol type of this packet：" + udp.protocol + "(UDP)");
+	   System.out.println("Length of this packet：" + udp.len);
 
 	  } 
 	  
 	  else if (p instanceof jpcap.packet.ARPPacket) {
-		  // 如果截获的包为UDP包
+		  // 如果截获的包为ARP包
 	   arpPacketCount++;
 
 	   ARPPacket arp = (ARPPacket) p;
@@ -84,14 +81,14 @@ public class ReceivePacket implements PacketReceiver {
 	   System.out
 	     .println("================================================================================");
 	   System.out.println("ARPPacket");
-	   System.out.println("|——*Sender hardware address of this packet：" + arp.sender_hardaddr   );
-	   System.out.println("|——*Target hardware address of this packet：" + arp.target_hardaddr  );
-	   System.out.println("|——*Protocol type of this packet：" + arp.prototype + "(ARP)");
-	   System.out.println("|——*Length of this packet：" + arp.len);
+	   System.out.println("Sender hardware address of this packet：" + arp.sender_hardaddr   );
+	   System.out.println("Target hardware address of this packet：" + arp.target_hardaddr  );
+	   System.out.println("Protocol type of this packet：" + arp.prototype + "(ARP)");
+	   System.out.println("Length of this packet：" + arp.len);
 	  }
 	  
 	  else if (p instanceof jpcap.packet.ICMPPacket) {
-		  // 如果截获的包为UDP包
+		  // 如果截获的包为ICMP包
 	   icmpPacketCount++;
 
 	   ICMPPacket icmp = (ICMPPacket) p;
@@ -101,23 +98,24 @@ public class ReceivePacket implements PacketReceiver {
 	   System.out
 	     .println("================================================================================");
 	   System.out.println("ICMPPacket");
-	   System.out.println("|——*Source IP address of this packet：" + icmp.src_ip);
-	   System.out.println("|——*Destination IP address of this packet：" + icmp.dst_ip);
-	   System.out.println("|——*Protocol type of this packet：" + icmp.protocol + "(UDP)");
-	   System.out.println("|——*Length of this packet：" + icmp.len);
+	   System.out.println("Source IP address of this packet：" + icmp.src_ip);
+	   System.out.println("Destination IP address of this packet：" + icmp.dst_ip);
+	   System.out.println("Protocol type of this packet：" + icmp.protocol + "(UDP)");
+	   System.out.println("Length of this packet：" + icmp.len);
 	  }
 	  
 	  System.out.println();
 	  System.out.println("Up to now：");
 	  System.out.println("The total number of captured packets is：" + packetCount);
 	  System.out.println("The total number of captured TCP packets is：" + tcpPacketCount
-	    + ",The total length of captured TCP packets is" + tcpPacketLength);
-	  System.out.println("The total number of captured UDP packets is为：" + udpPacketCount
-	    + ",The total length of captured UDP packets is" + udpPacketLength);
-
+	    + ",The total length of captured TCP packets is: " + tcpPacketLength);
+	  System.out.println("The total number of captured UDP packets is：" + udpPacketCount
+	    + ",The total length of captured UDP packets is: " + udpPacketLength);
+	  System.out.println("The total number of captured ARP packets is：" + arpPacketCount
+			    + ",The total length of captured ARP packets is: " + arpPacketLength);
+	  System.out.println("The total number of captured ICMP packets is：" + icmpPacketCount
+			    + ",The total length of captured ICMP packets is: " + icmpPacketLength);
 	 }
-	 
-
 	}
 
 
