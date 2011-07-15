@@ -24,7 +24,7 @@ public class Advanced {
 	public static void main(String[] args) throws IOException {
 
 		ReceivePacket a=new ReceivePacket();
-		JpcapCaptor captor=JpcapCaptor.openFile("/users/wenjuangong/testtrace.pcap");
+		JpcapCaptor captor=JpcapCaptor.openFile("./data/jpcaptest.pcap");
 		while(true){
 			  //read a packet from the opened filereceivePacket
 			  Packet packet=captor.getPacket();
