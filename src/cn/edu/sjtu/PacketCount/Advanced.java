@@ -25,7 +25,7 @@ public class Advanced {
 
 		ReceivePacket a=new ReceivePacket();
 
-		JpcapCaptor captor=JpcapCaptor.openFile("./data/jpcaptest.pcap");
+		JpcapCaptor captor=JpcapCaptor.openFile("./data/tcpudptest.pcap");
 
 		while(true){
 			  //read a packet from the opened filereceivePacket

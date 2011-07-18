@@ -28,7 +28,7 @@ public class PacketCount {
 	
 	public static  void main(String[] args) throws IOException  {
 	
-		JpcapCaptor captor=JpcapCaptor.openFile("/users/wenjuangong/暑假实习/第一周（07.09-07.15）/testtrace.pcap");
+		JpcapCaptor captor=JpcapCaptor.openFile("./data/tcpudptest.pcap");
 		
 		int count=0;
 		while(true){

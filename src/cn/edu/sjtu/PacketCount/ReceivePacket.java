@@ -10,7 +10,7 @@ package cn.edu.sjtu.PacketCount;
 
 
 
-import jpcap.PacketReceiver;
+//import jpcap.PacketReceiver;
 //import jpcap.packet.ARPPacket;
 //import jpcap.packet.ICMPPacket;
 //import jpcap.packet.Packet;
@@ -18,7 +18,7 @@ import jpcap.PacketReceiver;
 //import jpcap.packet.UDPPacket; 
 import jpcap.packet.*;
 
-public class ReceivePacket implements PacketReceiver {
+public class ReceivePacket  {
 //	类ReceivePacket声明自己使用接口PacketReceiver
 	
 	  int packetCount = 0;
